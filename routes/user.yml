@@ -1,0 +1,6 @@
+create:
+  handler: src/handlers/users/post.handler
+  events:
+    - http:
+        path: /users
+        method: post
