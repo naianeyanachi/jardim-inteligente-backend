@@ -22,6 +22,7 @@ def upgrade():
         sa.Column("id", sa.String(), nullable=False),
         sa.Column("nome", sa.String(), nullable=False),
         sa.Column("senha", sa.String(), nullable=False),
+        sa.Column("premium", sa.Boolean(), nullable=False),
         sa.Column("created_at", sa.DateTime(), nullable=False),
         sa.Column("updated_at", sa.DateTime(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
@@ -31,8 +32,15 @@ def upgrade():
         "plantas",
         sa.Column("id", sa.String(), nullable=False),
         sa.Column("especie", sa.String(), nullable=False),
-        sa.Column("temperatura", sa.String(), nullable=False),
+        sa.Column("descricao", sa.String(), nullable=False),
+        sa.Column("temperatura_maxima", sa.String(), nullable=False),
+        sa.Column("temperatura_minima", sa.String(), nullable=False),
+        sa.Column("temperatura_ideal", sa.String(), nullable=False),
+        sa.Column("umidade_solo_ideal", sa.String(), nullable=False),
+        sa.Column("umidade_ar_ideal", sa.String(), nullable=False),
+        sa.Column("luminosidade_ideal", sa.String(), nullable=False),
         sa.Column("regas", sa.Integer(), nullable=False),
+        sa.Column("preco", sa.Float(), nullable=False),
         sa.Column("created_at", sa.DateTime(), nullable=False),
         sa.Column("updated_at", sa.DateTime(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
@@ -44,9 +52,13 @@ def upgrade():
         sa.Column("id_planta", sa.String(), nullable=False),
         sa.Column("id_usuario", sa.String(), nullable=False),
         sa.Column("nome", sa.String(), nullable=False),
-        sa.Column("temperatura_maxima", sa.String(), nullable=True),
-        sa.Column("umidade_minima", sa.String(), nullable=True),
-        sa.Column("luminosidade_ideal", sa.String(), nullable=True),
+        sa.Column("temperatura_maxima", sa.String(), nullable=False),
+        sa.Column("temperatura_minima", sa.String(), nullable=False),
+        sa.Column("temperatura_ideal", sa.String(), nullable=False),
+        sa.Column("umidade_solo_ideal", sa.String(), nullable=False),
+        sa.Column("umidade_ar_ideal", sa.String(), nullable=False),
+        sa.Column("luminosidade_ideal", sa.String(), nullable=False),
+        sa.Column("regas", sa.Integer(), nullable=False),
         sa.Column("created_at", sa.DateTime(), nullable=False),
         sa.Column("updated_at", sa.DateTime(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
@@ -76,8 +88,24 @@ def upgrade():
         ),
     )
 
+    op.create_table(
+        "solicitacoes_rega",
+        sa.Column("id", sa.String(), nullable=False),
+        sa.Column("id_usuario_planta", sa.String(), nullable=False),
+        sa.Column("hora", sa.String(), nullable=False),
+        sa.Column("completo", sa.Boolean(), nullable=False),
+        sa.Column("created_at", sa.DateTime(), nullable=False),
+        sa.Column("updated_at", sa.DateTime(), nullable=False),
+        sa.PrimaryKeyConstraint("id"),
+        sa.ForeignKeyConstraint(
+            ["id_usuario_planta"], ["usuarios_plantas.id"],
+            name="fk_id_usuario_planta_solicitacoes_rega"
+        ),
+    )
+
 
 def downgrade():
+    op.drop_table("solicitacoes_rega")
     op.drop_table("medicoes")
     op.drop_table("usuarios_plantas")
     op.drop_table("plantas")
