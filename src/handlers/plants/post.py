@@ -10,6 +10,7 @@ def handler(event, context):
     
     try:
         especie = body['especie']
+        descricao = body['descricao']
         temperatura_maxima = body['temperatura_maxima']
         temperatura_minima = body['temperatura_minima']
         temperatura_ideal = body['temperatura_ideal']
@@ -24,6 +25,7 @@ def handler(event, context):
     planta = Planta(
         id=generate(),
         especie=especie,
+        descricao=descricao,
         temperatura_maxima=temperatura_maxima,
         temperatura_minima=temperatura_minima,
         temperatura_ideal=temperatura_ideal,

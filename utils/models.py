@@ -29,6 +29,7 @@ class Usuario(DeclarativeBase):
     id = Column(String, primary_key=True)
     nome = Column(String, nullable=False)
     senha = Column(String, nullable=False)
+    premium = Column(Boolean, nullable=False)
 
 
 class Planta(DeclarativeBase):

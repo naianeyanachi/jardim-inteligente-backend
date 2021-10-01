@@ -14,7 +14,7 @@ def handler(event, context):
     except:
         BAD_REQUEST('entrada errada')
 
-    usuario = Usuario(id=generate(), nome=nome, senha=senha)
+    usuario = Usuario(id=generate(), nome=nome, senha=senha, premium=False)
     db_session.add(usuario)
     db_session.commit()
     return OK('sucesso')

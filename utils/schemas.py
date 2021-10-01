@@ -7,21 +7,23 @@ class UsuarioSchema(Schema):
     id = fields.Str(required=True)
     nome = fields.Str(required=True)
     senha = fields.Str(required=True)
+    premium = fields.Bool(required=True)
 
 
 class PlantaSchema(Schema):
     __tablename__ = "plantas"
 
     id = fields.Str(required=True)
+    descricao = fields.Str(required=True)
     especie = fields.Str(required=True)
     temperatura_maxima = fields.Str(required=True)
     temperatura_minima = fields.Str(required=True)
     temperatura_ideal = fields.Str(required=True)
-    umidade_ideal = fields.Str(required=True)
+    umidade_solo_ideal = fields.Str(required=True)
+    umidade_ar_ideal = fields.Str(required=True)
     luminosidade_ideal = fields.Str(required=True)
     regas = fields.Integer(required=True)
-    preco = fields.Decimal(required=True)
-
+    preco = fields.Decimal(required=True, as_string=True)
 
 
 class MedicaoSchema(Schema):

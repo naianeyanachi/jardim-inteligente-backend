@@ -18,6 +18,7 @@ custom:
 
 functions:
   - ${file(routes/user.yml)}
+  - ${file(routes/plant.yml)}
 
 plugins:
   - serverless-offline
