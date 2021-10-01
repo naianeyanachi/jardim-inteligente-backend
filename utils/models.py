@@ -1,6 +1,7 @@
 import datetime
+from marshmallow.fields import Bool
 
-from sqlalchemy import DECIMAL, Column, DateTime, ForeignKey, String, Integer
+from sqlalchemy import Column, DateTime, ForeignKey, String, Integer, Boolean, Float
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
@@ -35,8 +36,15 @@ class Planta(DeclarativeBase):
 
     id = Column(String, primary_key=True)
     especie = Column(String, nullable=False)
-    temperatura = Column(String, nullable=False)
+    descricao = Column(String, nullable=False)
+    temperatura_maxima = Column(String, nullable=False)
+    temperatura_minima = Column(String, nullable=False)
+    temperatura_ideal = Column(String, nullable=False)
+    umidade_solo_ideal = Column(String, nullable=False)
+    umidade_ar_ideal = Column(String, nullable=False)
+    luminosidade_ideal = Column(String, nullable=False)
     regas = Column(Integer, nullable=False)
+    preco = Column(Float, nullable=False)
 
 
 class UsuarioPlanta(DeclarativeBase):
@@ -55,8 +63,12 @@ class UsuarioPlanta(DeclarativeBase):
     )
     nome = Column(String, nullable=False)
     temperatura_maxima = Column(String, nullable=False)
-    umidade_minima = Column(String, nullable=False)
+    temperatura_minima = Column(String, nullable=False)
+    temperatura_ideal = Column(String, nullable=False)
+    umidade_solo_ideal = Column(String, nullable=False)
+    umidade_ar_ideal = Column(String, nullable=False)
     luminosidade_ideal = Column(String, nullable=False)
+    regas = Column(Integer, nullable=False)
     usuario = relationship("Usuario", uselist=False)
     planta = relationship("Planta", uselist=False)
     medicoes = relationship("Medicao")
@@ -74,3 +86,16 @@ class Medicao(DeclarativeBase):
     temperatura = Column(String, nullable=False)
     umidade = Column(String, nullable=False)
     luminosidade = Column(String, nullable=False)
+
+
+class SolicitacoesRega(DeclarativeBase):
+    __tablename__ = "solicitacoes_rega"
+
+    id = Column(String, primary_key=True)
+    id_usuario_planta = Column(
+        String,
+        ForeignKey("usuarios_plantas.id", name="fk_id_usuario_planta_solicitacoes_rega"),
+        nullable=False
+    )
+    hora = Column(DateTime, nullable=False)
+    completo = Column(Boolean, nullable=False)

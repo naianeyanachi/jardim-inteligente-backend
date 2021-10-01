@@ -1,21 +1,24 @@
 service: jardim-inteligente-backend
 
-frameworkVersion: '2'
-
 provider:
   name: aws
-  runtime: python3.6
-  lambdaHashingVersion: 20201221
+  runtime: python3.8
+
+package:
+  individually: true
+  include:
+    - utils/*.py
 
 custom:
   prune:
     automatic: true
     number: 3
+  serverless-offline:
+    host: 0.0.0.0
 
 functions:
   - ${file(routes/user.yml)}
 
 plugins:
   - serverless-offline
-  - serverless-prune-plugin
   - serverless-python-requirements
