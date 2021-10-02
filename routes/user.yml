@@ -1,27 +1,27 @@
 create-user:
-  handler: src/handlers/users/post.handler
+  handler: handlers/users/post.handler
   events:
     - http:
-        path: users
+        path: user
         method: post
   package:
     include:
-      - src/handlers/users/post.py
+      - handlers/users/post.py
 get-user:
-  handler: src/handlers/users/get.handler
+  handler: handlers/users/get.handler
   events:
     - http:
         path: user/{id_user}
         method: get
   package:
     include:
-      - src/handlers/users/get.py
+      - handlers/users/get.py
 login:
-  handler: src/handlers/users/login.handler
+  handler: handlers/users/login.handler
   events:
     - http:
         path: login
         method: post
   package:
     include:
-      - src/handlers/users/login.py
+      - handlers/users/login.py

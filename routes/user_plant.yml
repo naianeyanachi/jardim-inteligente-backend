@@ -1,0 +1,27 @@
+create-user_plant:
+  handler: handlers/user_plants/post.handler
+  events:
+    - http:
+        path: user/{id_user}/plant
+        method: post
+  package:
+    include:
+      - handlers/user_plants/post.py
+get-user-plant:
+  handler: handlers/user_plants/get.handler
+  events:
+    - http:
+        path: user/plant/{id_user_plant}
+        method: get
+  package:
+    include:
+      - handlers/user_plants/get.py
+get-all-user-plants:
+  handler: handlers/user_plants/get_all.handler
+  events:
+    - http:
+        path: user/{id_user}/plants
+        method: get
+  package:
+    include:
+      - handlers/user_plants/get_all.py

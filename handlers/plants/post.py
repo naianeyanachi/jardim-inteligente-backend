@@ -20,7 +20,7 @@ def handler(event, context):
         regas = body['regas']
         preco = body['preco']
     except:
-        BAD_REQUEST('entrada errada')
+        return BAD_REQUEST('entrada errada')
 
     planta = Planta(
         id=generate(),

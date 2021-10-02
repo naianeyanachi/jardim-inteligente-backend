@@ -12,7 +12,7 @@ def handler(event, context):
         nome = body['nome']
         senha = body['senha']
     except:
-        BAD_REQUEST('entrada errada')
+        return BAD_REQUEST('entrada errada')
 
     usuario = Usuario(id=generate(), nome=nome, senha=senha, premium=False)
     db_session.add(usuario)

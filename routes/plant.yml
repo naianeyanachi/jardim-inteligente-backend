@@ -1,27 +1,27 @@
 create-plant:
-  handler: src/handlers/plants/post.handler
+  handler: handlers/plants/post.handler
   events:
     - http:
-        path: plants
+        path: plant
         method: post
   package:
     include:
-      - src/handlers/plants/post.py
+      - handlers/plants/post.py
 get-plant:
-  handler: src/handlers/plants/get.handler
+  handler: handlers/plants/get.handler
   events:
     - http:
         path: plant/{id_plant}
         method: get
   package:
     include:
-      - src/handlers/plants/get.py
+      - handlers/plants/get.py
 get-all-plants:
-  handler: src/handlers/plants/get_all.handler
+  handler: handlers/plants/get_all.handler
   events:
     - http:
         path: plants
         method: get
   package:
     include:
-      - src/handlers/plants/get_all.py
+      - handlers/plants/get_all.py
