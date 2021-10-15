@@ -53,3 +53,11 @@ class UsuarioPlantaSchema(Schema):
     planta = fields.Nested(PlantaSchema)
     medicoes = fields.Nested(MedicaoSchema, many=True)
 
+
+class SolicitacoesRegaSchema(Schema):
+    __tablename__ = "solicitacoes_rega"
+
+    id = fields.Str(required=True)
+    id_usuario_planta = fields.Str(required=True)
+    hora = fields.Str(required=True)
+    completo = fields.Bool(required=True)

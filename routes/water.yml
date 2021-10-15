@@ -1,0 +1,27 @@
+create-water-solicitation:
+  handler: handlers/water_solicitations/post.handler
+  events:
+    - http:
+        path: user/plant/{id_user_plant}/water-solicitation
+        method: post
+  package:
+    include:
+      - handlers/water_solicitations/post.py
+get-water-solicitations:
+  handler: handlers/water_solicitations/get.handler
+  events:
+    - http:
+        path: user/plant/{id_user_plant}/water-solicitations
+        method: get
+  package:
+    include:
+      - handlers/water_solicitations/get.py
+complete-water-solicitation:
+  handler: handlers/water_solicitations/put.handler
+  events:
+    - http:
+        path: water/{id_water_solicitation}
+        method: put
+  package:
+    include:
+      - handlers/water_solicitations/put.py

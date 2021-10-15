@@ -20,6 +20,7 @@ functions:
   - ${file(routes/user.yml)}
   - ${file(routes/plant.yml)}
   - ${file(routes/user_plant.yml)}
+  - ${file(routes/water.yml)}
 
 plugins:
   - serverless-offline
