@@ -1,4 +1,4 @@
-create-user_plant:
+create-user-plant:
   handler: handlers/user_plants/post.handler
   events:
     - http:
