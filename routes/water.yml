@@ -25,3 +25,12 @@ complete-water-solicitation:
   package:
     include:
       - handlers/water_solicitations/put.py
+delete-water-solicitation:
+  handler: handlers/water_solicitations/delete.handler
+  events:
+    - http:
+        path: water/{id_water_solicitation}
+        method: delete
+  package:
+    include:
+      - handlers/water_solicitations/delete.py
