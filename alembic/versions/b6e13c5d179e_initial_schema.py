@@ -92,7 +92,7 @@ def upgrade():
         "solicitacoes_rega",
         sa.Column("id", sa.String(), nullable=False),
         sa.Column("id_usuario_planta", sa.String(), nullable=False),
-        sa.Column("hora", sa.String(), nullable=False),
+        sa.Column("hora", sa.DateTime(), nullable=False),
         sa.Column("completo", sa.Boolean(), nullable=False),
         sa.Column("created_at", sa.DateTime(), nullable=False),
         sa.Column("updated_at", sa.DateTime(), nullable=False),
