@@ -1,0 +1,18 @@
+create-measure:
+  handler: handlers/measurements/post.handler
+  events:
+    - http:
+        path: user/plant/{id_user_plant}/measurement
+        method: post
+  package:
+    include:
+      - handlers/measurements/post.py
+get-measures:
+  handler: handlers/measurements/get.handler
+  events:
+    - http:
+        path: user/plant/{id_user_plant}/measurements
+        method: get
+  package:
+    include:
+      - handlers/measurements/get.py
