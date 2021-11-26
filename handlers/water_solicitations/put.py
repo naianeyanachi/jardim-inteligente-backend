@@ -1,9 +1,7 @@
 from utils.database import db_session
 from utils.models import SolicitacoesRega
-from nanoid import generate
-import json
 
-from utils.response import BAD_REQUEST, OK
+from utils.response import OK
 
 def handler(event, context):
     id_water_solicitation = event['pathParameters']['id_water_solicitation']
