@@ -7,7 +7,7 @@ import json
 def handler(event, context):
     id_user_plant = event['pathParameters']['id_user_plant']
     completo = False
-    if 'completo' in event["queryStringParameters"]:
+    if 'queryStringParameters' in event and event["queryStringParameters"] and 'completo' in event["queryStringParameters"]:
         completo = event["queryStringParameters"]['completo'] == 'true'
     water_solicitation = db_session.query(SolicitacoesRega).filter(SolicitacoesRega.id_usuario_planta == id_user_plant).filter(SolicitacoesRega.completo == completo).all()
     if not water_solicitation:
