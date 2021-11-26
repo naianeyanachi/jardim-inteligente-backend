@@ -11,7 +11,8 @@ def handler(event, context):
     
     try:
         temperatura = body['temperatura']
-        umidade = body['umidade']
+        umidade_solo = body['umidade_solo']
+        umidade_ar = body['umidade_ar']
         luminosidade = body['luminosidade']
     except:
         return BAD_REQUEST('entrada errada')
@@ -20,7 +21,8 @@ def handler(event, context):
         id=generate(),
         id_usuario_planta=id_user_plant,
         temperatura=temperatura,
-        umidade=umidade,
+        umidade_ar=umidade_ar,
+        umidade_solo=umidade_solo,
         luminosidade=luminosidade
     )
     db_session.add(measurement)
