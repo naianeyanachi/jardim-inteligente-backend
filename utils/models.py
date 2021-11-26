@@ -85,7 +85,8 @@ class Medicao(DeclarativeBase):
         nullable=False
     )
     temperatura = Column(String, nullable=False)
-    umidade = Column(String, nullable=False)
+    umidade_solo = Column(String, nullable=False)
+    umidade_ar = Column(String, nullable=False)
     luminosidade = Column(String, nullable=False)
 
 

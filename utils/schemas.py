@@ -32,7 +32,8 @@ class MedicaoSchema(Schema):
     id = fields.Str(required=True)
     id_usuario_planta = fields.Str(required=True)
     temperatura = fields.Str(required=True)
-    umidade = fields.Str(required=True)
+    umidade_solo = fields.Str(required=True)
+    umidade_ar = fields.Str(required=True)
     luminosidade = fields.Str(required=True)
     created_at = fields.Str(required=True)
 
