@@ -35,6 +35,10 @@ def handler(event, context):
         luminosidade_ideal=luminosidade_ideal,
         regas=regas
     )
-    db_session.add(user_plant)
-    db_session.commit()
+    try:
+        db_session.add(user_plant)
+        db_session.commit()
+    except:
+        db_session.rollback()
+        raise
     return OK('sucesso')

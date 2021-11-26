@@ -13,8 +13,11 @@ def handler(event, context):
         senha = body['senha']
     except:
         return BAD_REQUEST('entrada errada')
-
-    usuario = Usuario(id=generate(), nome=nome, senha=senha, premium=False)
-    db_session.add(usuario)
-    db_session.commit()
+    try:
+        usuario = Usuario(id=generate(), nome=nome, senha=senha, premium=False)
+        db_session.add(usuario)
+        db_session.commit()
+    except:
+        db_session.rollback()
+        raise
     return OK('sucesso')
