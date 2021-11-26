@@ -25,3 +25,12 @@ login:
   package:
     include:
       - handlers/users/login.py
+premium:
+  handler: handlers/users/put.handler
+  events:
+    - http:
+        path: user/{id_user}
+        method: put
+  package:
+    include:
+      - handlers/users/put.py
