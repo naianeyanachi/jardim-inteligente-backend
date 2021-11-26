@@ -1,0 +1,9 @@
+get-server-hour:
+  handler: handlers/server/get.handler
+  events:
+    - http:
+        path: server/hour
+        method: get
+  package:
+    include:
+      - handlers/server/get.py

@@ -22,6 +22,7 @@ functions:
   - ${file(routes/user_plant.yml)}
   - ${file(routes/water.yml)}
   - ${file(routes/measurement.yml)}
+  - ${file(routes/server.yml)}
 
 plugins:
   - serverless-offline
